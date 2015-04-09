@@ -31,8 +31,11 @@ public class Redis {
 		  jedis.hset("4-1H", "市一中新校", "0");
 		  jedis.hset("8-1H", "肇庆牌坊公园", "0");
 		  jedis.hset("201-1H", "肇庆牌坊公园", "0");
+		  jedis.hset("201-2H", "大旺客运站", "0");
+		  jedis.hset("201-2H", "贺华站", "0");
 		  jedis.hset("202-1H", "肇庆牌坊公园", "0");
 		  jedis.hset("203-1H", "肇庆牌坊公园", "0");
+		  jedis.hset("203-2H", "肇庆牌坊公园", "0");
 		  jedis.hset("204-1H", "肇庆牌坊公园", "0");
 		  jedis.hset("K01-1H", "肇庆牌坊公园", "0");
 		  jedis.hset("31-1H", "台湾城", "0");
@@ -52,7 +55,14 @@ public class Redis {
 					jedis.hset(lineKeyH,"铁路区",line.getStopnumafter());
 					break;
 				case "中移动肇庆分公司":
-					jedis.hset(lineKeyH,"君安花苑",line.getStopnumafter());
+					if(lineKeyH.equals("27-1H"))
+					{
+						jedis.hset(lineKeyH,"君安花苑",line.getStopnumafter());
+					}
+					else
+					{
+						jedis.hset(lineKeyH,line.getStopname(),line.getStopnumafter());
+					}
 					break;
 				case "龟顶新城":
 					jedis.hset(lineKeyH,"光大锦绣山河东",line.getStopnumafter());
